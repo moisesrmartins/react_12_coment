@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import firebase from "./firebase";
 
-const ref = firebase.database().ref("test");
-ref.on("value", (snapshot) => {
-  console.log(snapshot.val());
-});
-
 function App() {
-  return <div></div>;
+  const [data, setData] = useState({});
+  const ref = firebase.database().ref("test");
+  ref.on("value", (snapshot) => {
+    console.log(snapshot.val());
+
+    setData(snapshot.val());
+  });
+
+  return (
+    <div>
+      <pre>{JSON.stringify(data)}</pre>
+    </div>
+  );
 }
 
 export default App;
