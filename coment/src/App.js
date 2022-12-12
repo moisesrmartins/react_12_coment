@@ -15,18 +15,33 @@ const useDatabase = (endpoint) => {
   return data;
 };
 
-const Coments = () => {
-  const data = useDatabase("test");
+const Coment = ({ visible }) => {
+  const endpoint = visible ? "test" : "test/a";
+  const data = useDatabase(endpoint);
   return <pre>{JSON.stringify(data)}</pre>;
+};
+
+const Coment2 = ({ visible }) => {
+  const endpoint = visible ? "test" : "test/b";
+  const data2 = useDatabase(endpoint);
+  return <pre>{JSON.stringify(data2)}</pre>;
 };
 
 function App() {
   const [visible, toggle] = useState(false);
+  const [visible2, toggle2] = useState(false);
 
   return (
     <div>
-      <button onClick={() => toggle(!visible)}>Press</button>
-      {visible && <Coments />}
+      <div>
+        <button onClick={() => toggle(!visible)}>Test/a</button>
+        {visible && <Coment />}
+      </div>
+      <br />
+      <div>
+        <button onClick={() => toggle2(!visible2)}>Test/b</button>
+        {visible2 && <Coment2 />}
+      </div>
     </div>
   );
 }
