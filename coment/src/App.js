@@ -27,19 +27,71 @@ const Coment2 = ({ visible }) => {
   return <pre>{JSON.stringify(data2)}</pre>;
 };
 
+const useDatabasePush = (endpoint) => {
+  const [status, setStatus] = useState("");
+
+  const save = (data) => {
+    const ref = firebase.database().ref(endpoint);
+    ref.push(data, (err) => {
+      if (err) {
+        setStatus("ERROR");
+      } else {
+        setStatus("SUCESS");
+      }
+    });
+  };
+
+  return [status, save];
+};
+
+const useDatabasePush2 = (endpoint) => {
+  const [status2, setStatus2] = useState("");
+
+  const save2 = (data) => {
+    const ref = firebase.database().ref(endpoint);
+    ref.push(data, (err) => {
+      if (err) {
+        setStatus2("ERROR");
+      } else {
+        setStatus2("SUCESS");
+      }
+    });
+  };
+
+  return [status2, save2];
+};
+
 function App() {
   const [visible, toggle] = useState(false);
+  const [status, save] = useDatabasePush("test/status/status1");
+
   const [visible2, toggle2] = useState(false);
+  const [status2, save2] = useDatabasePush2("test/status/status2");
 
   return (
     <div>
       <div>
-        <button onClick={() => toggle(!visible)}>Test/a</button>
+        <p>Status:{status}</p>
+        <button
+          onClick={() => {
+            toggle(!visible);
+            save({ a: 1 });
+          }}
+        >
+          Test/a
+        </button>
         {visible && <Coment />}
       </div>
-      <br />
       <div>
-        <button onClick={() => toggle2(!visible2)}>Test/b</button>
+        <p>Status:{status2}</p>
+        <button
+          onClick={() => {
+            toggle2(!visible2);
+            save2({ b: 2 });
+          }}
+        >
+          Test/b
+        </button>
         {visible2 && <Coment2 />}
       </div>
     </div>
