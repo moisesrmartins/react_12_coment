@@ -32,13 +32,23 @@ const useDatabasePush = (endpoint) => {
   return [status, save];
 };
 
+const Comment = ({ comment }) => {
+  return <div>{comment.content} by: Moisés</div>;
+};
+
 const Coment = () => {
   const data = useDatabase("coments");
-  return <pre>{JSON.stringify(data)}</pre>;
+  if (!data) {
+    return <p>NO COMMENTS HERE</p>;
+  }
+  const ids = Object.keys(data);
+  return ids.map((id) => {
+    return <Comment key={id} comment={data[id]} />;
+  }, []);
 };
 
 function Coments() {
-  const [save] = useDatabasePush("coments");
+  const [, save] = useDatabasePush("coments");
 
   return (
     <div>
@@ -46,7 +56,7 @@ function Coments() {
         <button
           onClick={() => {
             save({
-              content: "First Coment",
+              content: "First Comment",
             });
           }}
         >
