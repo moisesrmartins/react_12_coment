@@ -1,19 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import firebase from "../firebase";
-
-const useDatabase = (endpoint) => {
-  const [data, setData] = useState({});
-  useEffect(() => {
-    const ref = firebase.database().ref(endpoint);
-    ref.on("value", (snapshot) => {
-      setData(snapshot.val());
-    });
-    return () => {
-      ref.off();
-    };
-  }, [endpoint]);
-  return data;
-};
+import useDatabase from "../scripts/useDatabase";
 
 const Coment = ({ visible }) => {
   const endpoint = visible ? "test" : "test/a";
