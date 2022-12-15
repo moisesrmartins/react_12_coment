@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import firebase from "../firebase";
 import useDatabase from "../scripts/useDatabase";
 import useDatabasePush from "../scripts/useDatabasePush";
+import useDatabasePush2 from "../scripts/useDatabasePush2";
 
 const Coment = ({ visible }) => {
   const endpoint = visible ? "test" : "test/a";
@@ -13,23 +13,6 @@ const Coment2 = ({ visible }) => {
   const endpoint = visible ? "test" : "test/b";
   const data2 = useDatabase(endpoint);
   return <pre>{JSON.stringify(data2)}</pre>;
-};
-
-const useDatabasePush2 = (endpoint) => {
-  const [status2, setStatus2] = useState("");
-
-  const save2 = (data) => {
-    const ref = firebase.database().ref(endpoint);
-    ref.push(data, (err) => {
-      if (err) {
-        setStatus2("ERROR");
-      } else {
-        setStatus2("SUCESS");
-      }
-    });
-  };
-
-  return [status2, save2];
 };
 
 function Test() {
