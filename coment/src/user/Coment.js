@@ -42,6 +42,9 @@ const Coment = () => {
     return <p>NO COMMENTS HERE</p>;
   }
   const ids = Object.keys(data);
+  if (ids.length === 0) {
+    return <p>Loading...</p>;
+  }
   return ids.map((id) => {
     return <Comment key={id} comment={data[id]} />;
   }, []);
