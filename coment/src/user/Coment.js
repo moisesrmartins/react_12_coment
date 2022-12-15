@@ -1,23 +1,6 @@
-import React, { useState } from "react";
-import firebase from "../firebase";
+import React from "react";
 import useDatabase from "../scripts/useDatabase";
-
-const useDatabasePush = (endpoint) => {
-  const [status, setStatus] = useState("");
-
-  const save = (data) => {
-    const ref = firebase.database().ref(endpoint);
-    ref.push(data, (err) => {
-      if (err) {
-        setStatus("ERROR");
-      } else {
-        setStatus("SUCESS");
-      }
-    });
-  };
-
-  return [status, save];
-};
+import useDatabasePush from "../scripts/useDatabasePush";
 
 const Comment = ({ comment }) => {
   return <div>{comment.content} by: Moisés</div>;
