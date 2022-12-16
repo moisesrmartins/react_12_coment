@@ -1,6 +1,7 @@
 import React from "react";
 import Test from "./user/Test";
 import Coments from "./user/Coment";
+import Form from "./user/Form";
 
 function App() {
   return (
@@ -8,6 +9,8 @@ function App() {
       <Test />
       <br />
       <Coments />
+      <br />
+      <Form />
     </div>
   );
 }
