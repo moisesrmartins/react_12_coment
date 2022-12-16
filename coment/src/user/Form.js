@@ -1,11 +1,12 @@
 import React from "react";
 import useDatabase from "../scripts/useDatabase";
 import NewForm from "../scripts/NewForm";
+import Time from "../scripts/Time";
 
 const Former = ({ form }) => {
   return (
     <div>
-      {form.content} by: {form.user.name}
+      {form.content} by: {form.user.name} at <Time timestamp={form.createdAt} />
     </div>
   );
 };
