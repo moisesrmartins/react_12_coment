@@ -1,6 +1,6 @@
 import React from "react";
 import useDatabase from "../scripts/useDatabase";
-import useDatabasePush from "../scripts/useDatabasePush";
+import NewForm from "../scripts/NewForm";
 
 const Former = ({ form }) => {
   return (
@@ -25,22 +25,11 @@ const Forms = () => {
 };
 
 function Form() {
-  const [, save] = useDatabasePush("coments");
-
   return (
     <div>
-      <div>
-        <button
-          onClick={() => {
-            save({
-              content: "First Comment",
-            });
-          }}
-        >
-          Coments
-        </button>
-        <Forms />
-      </div>
+      <NewForm />
+      <br />
+      <Forms />
     </div>
   );
 }
