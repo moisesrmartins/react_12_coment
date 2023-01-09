@@ -2,11 +2,11 @@ import React from "react";
 import Test from "./user/Test";
 import Coments from "./user/Coment";
 import Form from "./user/Form";
-import { AuthContext } from "./user/auth";
+import { AuthProvider } from "./user/auth";
 
 function App() {
   return (
-    <AuthContext.Provider value={""}>
+    <AuthProvider>
       <div>
         <Test />
         <br />
@@ -14,7 +14,7 @@ function App() {
         <br />
         <Form />
       </div>
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 }
 
