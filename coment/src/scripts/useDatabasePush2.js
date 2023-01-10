@@ -10,7 +10,7 @@ const useDatabasePush2 = (endpoint) => {
       if (err) {
         setStatus2("ERROR");
       } else {
-        setStatus2("SUCESS");
+        setStatus2("SUCCESS");
       }
     });
   };
