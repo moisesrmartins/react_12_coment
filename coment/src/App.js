@@ -2,7 +2,13 @@ import React from "react";
 import Test from "./user/Test";
 import Coments from "./user/Coment";
 import Form from "./user/Form";
-import { AuthProvider } from "./user/auth";
+import { AuthProvider } from "./server/auth";
+import firebase from "./server/firebase";
+
+const ref = firebase.database().ref("test");
+ref.on("value", (snapshot) => {
+  console.log(snapshot.val());
+});
 
 function App() {
   return (

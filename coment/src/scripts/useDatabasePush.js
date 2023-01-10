@@ -1,5 +1,5 @@
 import { useState } from "react";
-import firebase from "../firebase";
+import firebase from "../server/firebase";
 
 const useDatabasePush = (endpoint) => {
   const [status, setStatus] = useState("");

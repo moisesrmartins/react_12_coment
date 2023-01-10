@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import firebase from "../firebase";
+import firebase from "../server/firebase";
 
 const useDatabase = (endpoint) => {
   const [data, setData] = useState({});

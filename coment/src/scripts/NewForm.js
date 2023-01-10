@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useDatabasePush from "../scripts/useDatabasePush";
-import firebase from "../firebase";
+import firebase from "../server/firebase";
 
 const NewForm = (props) => {
   const [, save] = useDatabasePush("Form");
