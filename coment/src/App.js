@@ -3,12 +3,7 @@ import Test from "./user/Test";
 import Coments from "./user/Coment";
 import Form from "./user/Form";
 import { AuthProvider } from "./server/auth";
-import firebase from "./server/firebase";
-
-const ref = firebase.database().ref("test");
-ref.on("value", (snapshot) => {
-  console.log(snapshot.val());
-});
+import CreateUser from "./server/CreateUser";
 
 function App() {
   return (
@@ -19,6 +14,8 @@ function App() {
         <Coments />
         <br />
         <Form />
+        <br />
+        <CreateUser />
       </div>
     </AuthProvider>
   );
